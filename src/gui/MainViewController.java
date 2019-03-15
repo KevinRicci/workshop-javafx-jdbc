@@ -33,7 +33,7 @@ public class MainViewController implements Initializable{
 	}
 	
 	public void onMenuItemDepartmentAction() {
-		System.out.println("onMenuItemDepartmentAction");
+		loadView("/gui/DepartmentList.fxml");
 	}
 	
 	public void onMenuItemAbout() {
@@ -49,7 +49,7 @@ public class MainViewController implements Initializable{
 	private synchronized void loadView(String absoluteName) { //synchronized: multi-threading
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-			VBox newVBox= loader.load();
+			VBox newVBox = loader.load();
 			
 			Scene mainScene = Main.getMainScene();
 			VBox mainVBox = (VBox) ((ScrollPane)mainScene.getRoot()).getContent();
