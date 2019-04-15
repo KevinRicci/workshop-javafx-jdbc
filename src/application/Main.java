@@ -5,34 +5,32 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	private static Scene mainScene;
+	private static Scene enterScene;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
-			ScrollPane scrollPane = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/EnterView.fxml"));
+			AnchorPane anchorPane = loader.load();
 			
-			scrollPane.setFitToHeight(true);
-			scrollPane.setFitToWidth(true);
+			enterScene = new Scene(anchorPane);
 			
-			mainScene = new Scene(scrollPane);
-			
-			primaryStage.setScene(mainScene);
+			primaryStage.setScene(enterScene);
 			primaryStage.setTitle("Sample JavaFX application");
+			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static Scene getMainScene() {
-		return mainScene;
+	public static Scene getEnterViewScene() {
+		return enterScene;
 	}
 
 	public static void main(String[] args) {

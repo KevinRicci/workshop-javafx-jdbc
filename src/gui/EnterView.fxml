@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="432.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EnterViewController">
+   <children>
+      <ImageView fx:id="image" fitHeight="473.0" fitWidth="700.0" layoutX="78.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../../Pictures/EM-2018-A-HUMANIDADE-VERÁ-UM-BURACO-NEGRO-PELA-PRIMEIRA-VEZ-NA-HISTÓRIA.jpg" />
+         </image></ImageView>
+      <VBox layoutX="34.0" layoutY="29.0" prefHeight="271.0" prefWidth="173.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Label text="User" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUser" promptText="name">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <effect>
+                  <Reflection />
+               </effect>
+            </TextField>
+            <Label text="Password" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordField">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </PasswordField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btEnter" mnemonicParsing="false" onAction="#onBtEnterAction" text="Enter" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="labelError" textFill="RED">
+                     <padding>
+                        <Insets left="5.0" top="15.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <ProgressIndicator prefHeight="59.0" prefWidth="51.0">
+               <effect>
+                  <GaussianBlur />
+               </effect>
+            </ProgressIndicator>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

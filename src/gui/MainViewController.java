@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
-import application.Main;
 import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import model.sevices.DepartmentService;
+import model.sevices.SellerService;
 
 public class MainViewController implements Initializable{
 	
@@ -31,7 +31,10 @@ public class MainViewController implements Initializable{
 	
 	
 	public void onMenuItemSellerAction() {
-		System.out.println("onMenuItemSellerAction");
+		loadView("/gui/SellerList.fxml", (SellerListController controller) -> {
+			controller.setSellerService(new SellerService());
+			controller.updateTableView();
+		});
 	}
 	
 	public void onMenuItemDepartmentAction() {
@@ -56,7 +59,7 @@ public class MainViewController implements Initializable{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVBox = loader.load();
 			
-			Scene mainScene = Main.getMainScene();
+			Scene mainScene = EnterViewController.getMainViewScene();
 			VBox mainVBox = (VBox) ((ScrollPane)mainScene.getRoot()).getContent();
 			
 			Node mainMenu = mainVBox.getChildren().get(0);
@@ -68,6 +71,7 @@ public class MainViewController implements Initializable{
 			initializingAction.accept(controller);
 		}
 		catch(IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
 	}
